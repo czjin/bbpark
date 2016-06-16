@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<%#include "parks.h" %>
+<% tfetch(Parks, parks); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>Showing Parks</h1>
+<dt>ID</dt><dd><%= parks.id() %></dd><br />
+<dt>Session ID</dt><dd><%= parks.sessionId() %></dd><br />
+<dt>User ID</dt><dd><%= parks.userId() %></dd><br />
+<dt>Vehicle ID</dt><dd><%= parks.vehicleId() %></dd><br />
+<dt>Parking ID</dt><dd><%= parks.parkingId() %></dd><br />
+<dt>Parking Space No</dt><dd><%= parks.parkingSpaceNo() %></dd><br />
+<dt>Start Time</dt><dd><%= parks.startTime() %></dd><br />
+<dt>End Time</dt><dd><%= parks.endTime() %></dd><br />
+<dt>Park Fee</dt><dd><%= parks.parkFee() %></dd><br />
+<dt>Prepaid</dt><dd><%= parks.prepaid() %></dd><br />
+<dt>Order Duration</dt><dd><%= parks.orderDuration() %></dd><br />
+<dt>Status</dt><dd><%= parks.status() %></dd><br />
+<dt>Pay Mode</dt><dd><%= parks.payMode() %></dd><br />
+<dt>Pay Source</dt><dd><%= parks.paySource() %></dd><br />
+<dt>Qrcode Path</dt><dd><%= parks.qrcodePath() %></dd><br />
+<dt>Memo</dt><dd><%= parks.memo() %></dd><br />
+
+<%== linkTo("Edit", urla("edit", parks.id())) %> |
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

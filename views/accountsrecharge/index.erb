@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<%#include "accountsrecharge.h" %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+
+<h1>Listing Accounts Recharge</h1>
+
+<%== linkTo("New entry", urla("entry")) %><br />
+<br />
+<table border="1" cellpadding="5" style="border: 1px #d0d0d0 solid; border-collapse: collapse;">
+  <tr>
+    <th>ID</th>
+    <th>User ID</th>
+    <th>Amount</th>
+    <th>Source</th>
+    <th>Memo</th>
+  </tr>
+<% tfetch(QList<AccountsRecharge>, accountsRechargeList); %>
+<% for (const auto &i : accountsRechargeList) { %>
+  <tr>
+    <td><%= i.id() %></td>
+    <td><%= i.userId() %></td>
+    <td><%= i.amount() %></td>
+    <td><%= i.source() %></td>
+    <td><%= i.memo() %></td>
+    <td>
+      <%== linkTo("Show", urla("show", i.id())) %>
+      <%== linkTo("Edit", urla("edit", i.id())) %>
+      <%== linkTo("Remove", urla("remove", i.id()), Tf::Post, "confirm('Are you sure?')") %>
+    </td>
+  </tr>
+<% } %>
+</table>
+
+</body>
+</html>

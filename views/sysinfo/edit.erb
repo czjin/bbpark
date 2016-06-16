@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<%#include "sysinfo.h" %>
+<% tfetch(QVariantMap, sysinfo); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>Editing Sysinfo</h1>
+
+<%== formTag(urla("save", sysinfo["id"]), Tf::Post) %>
+  <p>
+    <label>ID<br /><input type="text" name="sysinfo[id]" value="<%= sysinfo["id"] %>" readonly="readonly" /></label>
+  </p>
+  <p>
+    <label>Company<br /><input type="text" name="sysinfo[company]" value="<%= sysinfo["company"] %>" /></label>
+  </p>
+  <p>
+    <label>Slogan<br /><input type="text" name="sysinfo[slogan]" value="<%= sysinfo["slogan"] %>" /></label>
+  </p>
+  <p>
+    <label>Website<br /><input type="text" name="sysinfo[website]" value="<%= sysinfo["website"] %>" /></label>
+  </p>
+  <p>
+    <label>Contact Hotline<br /><input type="text" name="sysinfo[contactHotline]" value="<%= sysinfo["contactHotline"] %>" /></label>
+  </p>
+  <p>
+    <label>Serv Ver<br /><input type="text" name="sysinfo[servVer]" value="<%= sysinfo["servVer"] %>" /></label>
+  </p>
+  <p>
+    <label>App Ver<br /><input type="text" name="sysinfo[appVer]" value="<%= sysinfo["appVer"] %>" /></label>
+  </p>
+  <p>
+    <label>Handset Ver<br /><input type="text" name="sysinfo[handsetVer]" value="<%= sysinfo["handsetVer"] %>" /></label>
+  </p>
+  <p>
+    <input type="submit" value="Update" />
+  </p>
+</form>
+
+<%== linkTo("Show", urla("show", sysinfo["id"])) %> |
+<%== linkTo("Back", urla("index")) %>
+</body>
+</html>

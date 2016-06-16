@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<%#include "vehicles.h" %>
+<% tfetch(QVariantMap, vehicles); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>Editing Vehicles</h1>
+
+<%== formTag(urla("save", vehicles["id"]), Tf::Post) %>
+  <p>
+    <label>ID<br /><input type="text" name="vehicles[id]" value="<%= vehicles["id"] %>" readonly="readonly" /></label>
+  </p>
+  <p>
+    <label>Plate<br /><input type="text" name="vehicles[plate]" value="<%= vehicles["plate"] %>" /></label>
+  </p>
+  <p>
+    <label>Engine No<br /><input type="text" name="vehicles[engineNo]" value="<%= vehicles["engineNo"] %>" /></label>
+  </p>
+  <p>
+    <label>Frame No<br /><input type="text" name="vehicles[frameNo]" value="<%= vehicles["frameNo"] %>" /></label>
+  </p>
+  <p>
+    <label>Register Time<br /><input type="text" name="vehicles[registerTime]" value="<%= vehicles["registerTime"] %>" /></label>
+  </p>
+  <p>
+    <label>Vehicle Type<br /><input type="text" name="vehicles[vehicleType]" value="<%= vehicles["vehicleType"] %>" /></label>
+  </p>
+  <p>
+    <input type="submit" value="Update" />
+  </p>
+</form>
+
+<%== linkTo("Show", urla("show", vehicles["id"])) %> |
+<%== linkTo("Back", urla("index")) %>
+</body>
+</html>

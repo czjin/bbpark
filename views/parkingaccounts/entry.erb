@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<%#include "parkingaccounts.h" %>
+<% tfetch(QVariantMap, parkingAccounts); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>New Parking Accounts</h1>
+
+<%== formTag(urla("create"), Tf::Post) %>
+  <p>
+    <label>Acc No<br /><input name="parkingAccounts[accNo]" value="<%= parkingAccounts["accNo"] %>" /></label>
+  </p>
+  <p>
+    <label>Balance<br /><input name="parkingAccounts[balance]" value="<%= parkingAccounts["balance"] %>" /></label>
+  </p>
+  <p>
+    <label>Parking ID<br /><input name="parkingAccounts[parkingId]" value="<%= parkingAccounts["parkingId"] %>" /></label>
+  </p>
+  <p>
+    <label>Status<br /><input name="parkingAccounts[status]" value="<%= parkingAccounts["status"] %>" /></label>
+  </p>
+  <p>
+    <label>Type<br /><input name="parkingAccounts[type]" value="<%= parkingAccounts["type"] %>" /></label>
+  </p>
+  <p>
+    <label>Issuer<br /><input name="parkingAccounts[issuer]" value="<%= parkingAccounts["issuer"] %>" /></label>
+  </p>
+  <p>
+    <label>Memo<br /><input name="parkingAccounts[memo]" value="<%= parkingAccounts["memo"] %>" /></label>
+  </p>
+  <p>
+    <input type="submit" value="Create" />
+  </p>
+</form>
+
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

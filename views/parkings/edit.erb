@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<%#include "parkings.h" %>
+<% tfetch(QVariantMap, parkings); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>Editing Parkings</h1>
+
+<%== formTag(urla("save", parkings["id"]), Tf::Post) %>
+  <p>
+    <label>ID<br /><input type="text" name="parkings[id]" value="<%= parkings["id"] %>" readonly="readonly" /></label>
+  </p>
+  <p>
+    <label>Name<br /><input type="text" name="parkings[name]" value="<%= parkings["name"] %>" /></label>
+  </p>
+  <p>
+    <label>Description<br /><input type="text" name="parkings[description]" value="<%= parkings["description"] %>" /></label>
+  </p>
+  <p>
+    <label>Addr<br /><input type="text" name="parkings[addr]" value="<%= parkings["addr"] %>" /></label>
+  </p>
+  <p>
+    <label>Charge Standard<br /><input type="text" name="parkings[chargeStandard]" value="<%= parkings["chargeStandard"] %>" /></label>
+  </p>
+  <p>
+    <label>Longitude<br /><input type="text" name="parkings[longitude]" value="<%= parkings["longitude"] %>" /></label>
+  </p>
+  <p>
+    <label>Latitude<br /><input type="text" name="parkings[latitude]" value="<%= parkings["latitude"] %>" /></label>
+  </p>
+  <p>
+    <label>Type<br /><input type="text" name="parkings[type]" value="<%= parkings["type"] %>" /></label>
+  </p>
+  <p>
+    <label>Plan Path<br /><input type="text" name="parkings[planPath]" value="<%= parkings["planPath"] %>" /></label>
+  </p>
+  <p>
+    <label>Space Start<br /><input type="text" name="parkings[spaceStart]" value="<%= parkings["spaceStart"] %>" /></label>
+  </p>
+  <p>
+    <label>Space Total<br /><input type="text" name="parkings[spaceTotal]" value="<%= parkings["spaceTotal"] %>" /></label>
+  </p>
+  <p>
+    <label>Space Free<br /><input type="text" name="parkings[spaceFree]" value="<%= parkings["spaceFree"] %>" /></label>
+  </p>
+  <p>
+    <label>Qrcode ID<br /><input type="text" name="parkings[qrcodeId]" value="<%= parkings["qrcodeId"] %>" /></label>
+  </p>
+  <p>
+    <label>Memo<br /><input type="text" name="parkings[memo]" value="<%= parkings["memo"] %>" /></label>
+  </p>
+  <p>
+    <input type="submit" value="Update" />
+  </p>
+</form>
+
+<%== linkTo("Show", urla("show", parkings["id"])) %> |
+<%== linkTo("Back", urla("index")) %>
+</body>
+</html>

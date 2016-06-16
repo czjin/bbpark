@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<%#include "parkcoupon.h" %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+
+<h1>Listing Park Coupon</h1>
+
+<%== linkTo("New entry", urla("entry")) %><br />
+<br />
+<table border="1" cellpadding="5" style="border: 1px #d0d0d0 solid; border-collapse: collapse;">
+  <tr>
+    <th>ID</th>
+    <th>Coupon No</th>
+    <th>Check Code</th>
+    <th>Amount</th>
+    <th>Status</th>
+    <th>Use Time</th>
+    <th>Valid till</th>
+  </tr>
+<% tfetch(QList<ParkCoupon>, parkCouponList); %>
+<% for (const auto &i : parkCouponList) { %>
+  <tr>
+    <td><%= i.id() %></td>
+    <td><%= i.couponNo() %></td>
+    <td><%= i.checkCode() %></td>
+    <td><%= i.amount() %></td>
+    <td><%= i.status() %></td>
+    <td><%= i.useTime() %></td>
+    <td><%= i.validTill() %></td>
+    <td>
+      <%== linkTo("Show", urla("show", i.id())) %>
+      <%== linkTo("Edit", urla("edit", i.id())) %>
+      <%== linkTo("Remove", urla("remove", i.id()), Tf::Post, "confirm('Are you sure?')") %>
+    </td>
+  </tr>
+<% } %>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<%#include "accounts.h" %>
+<% tfetch(Accounts, accounts); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>Showing Accounts</h1>
+<dt>ID</dt><dd><%= accounts.id() %></dd><br />
+<dt>Acc No</dt><dd><%= accounts.accNo() %></dd><br />
+<dt>User ID</dt><dd><%= accounts.userId() %></dd><br />
+<dt>Pay Code</dt><dd><%= accounts.payCode() %></dd><br />
+<dt>Balance</dt><dd><%= accounts.balance() %></dd><br />
+<dt>Credit</dt><dd><%= accounts.credit() %></dd><br />
+<dt>Credit Available</dt><dd><%= accounts.creditAvailable() %></dd><br />
+<dt>Status</dt><dd><%= accounts.status() %></dd><br />
+<dt>Type</dt><dd><%= accounts.type() %></dd><br />
+<dt>Issuer</dt><dd><%= accounts.issuer() %></dd><br />
+<dt>Created at</dt><dd><%= accounts.createdAt() %></dd><br />
+<dt>Updated at</dt><dd><%= accounts.updatedAt() %></dd><br />
+<dt>Memo</dt><dd><%= accounts.memo() %></dd><br />
+
+<%== linkTo("Edit", urla("edit", accounts.id())) %> |
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

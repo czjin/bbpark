@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<%#include "sysinfo.h" %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+
+<h1>Listing Sysinfo</h1>
+
+<%== linkTo("New entry", urla("entry")) %><br />
+<br />
+<table border="1" cellpadding="5" style="border: 1px #d0d0d0 solid; border-collapse: collapse;">
+  <tr>
+    <th>ID</th>
+    <th>Company</th>
+    <th>Slogan</th>
+    <th>Website</th>
+    <th>Contact Hotline</th>
+    <th>Serv Ver</th>
+    <th>App Ver</th>
+    <th>Handset Ver</th>
+  </tr>
+<% tfetch(QList<Sysinfo>, sysinfoList); %>
+<% for (const auto &i : sysinfoList) { %>
+  <tr>
+    <td><%= i.id() %></td>
+    <td><%= i.company() %></td>
+    <td><%= i.slogan() %></td>
+    <td><%= i.website() %></td>
+    <td><%= i.contactHotline() %></td>
+    <td><%= i.servVer() %></td>
+    <td><%= i.appVer() %></td>
+    <td><%= i.handsetVer() %></td>
+    <td>
+      <%== linkTo("Show", urla("show", i.id())) %>
+      <%== linkTo("Edit", urla("edit", i.id())) %>
+      <%== linkTo("Remove", urla("remove", i.id()), Tf::Post, "confirm('Are you sure?')") %>
+    </td>
+  </tr>
+<% } %>
+</table>
+
+</body>
+</html>

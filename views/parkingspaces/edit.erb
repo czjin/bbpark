@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<%#include "parkingspaces.h" %>
+<% tfetch(QVariantMap, parkingSpaces); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>Editing Parking Spaces</h1>
+
+<%== formTag(urla("save", parkingSpaces["id"]), Tf::Post) %>
+  <p>
+    <label>ID<br /><input type="text" name="parkingSpaces[id]" value="<%= parkingSpaces["id"] %>" readonly="readonly" /></label>
+  </p>
+  <p>
+    <label>Parking ID<br /><input type="text" name="parkingSpaces[parkingId]" value="<%= parkingSpaces["parkingId"] %>" /></label>
+  </p>
+  <p>
+    <label>Number<br /><input type="text" name="parkingSpaces[number]" value="<%= parkingSpaces["number"] %>" /></label>
+  </p>
+  <p>
+    <label>Status<br /><input type="text" name="parkingSpaces[status]" value="<%= parkingSpaces["status"] %>" /></label>
+  </p>
+  <p>
+    <label>Qrcode Path<br /><input type="text" name="parkingSpaces[qrcodePath]" value="<%= parkingSpaces["qrcodePath"] %>" /></label>
+  </p>
+  <p>
+    <input type="submit" value="Update" />
+  </p>
+</form>
+
+<%== linkTo("Show", urla("show", parkingSpaces["id"])) %> |
+<%== linkTo("Back", urla("index")) %>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<%#include "parkings.h" %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+
+<h1>Listing Parkings</h1>
+
+<%== linkTo("New entry", urla("entry")) %><br />
+<br />
+<table border="1" cellpadding="5" style="border: 1px #d0d0d0 solid; border-collapse: collapse;">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Addr</th>
+    <th>Charge Standard</th>
+    <th>Longitude</th>
+    <th>Latitude</th>
+    <th>Type</th>
+    <th>Plan Path</th>
+    <th>Space Start</th>
+    <th>Space Total</th>
+    <th>Space Free</th>
+    <th>Qrcode ID</th>
+    <th>Memo</th>
+  </tr>
+<% tfetch(QList<Parkings>, parkingsList); %>
+<% for (const auto &i : parkingsList) { %>
+  <tr>
+    <td><%= i.id() %></td>
+    <td><%= i.name() %></td>
+    <td><%= i.description() %></td>
+    <td><%= i.addr() %></td>
+    <td><%= i.chargeStandard() %></td>
+    <td><%= i.longitude() %></td>
+    <td><%= i.latitude() %></td>
+    <td><%= i.type() %></td>
+    <td><%= i.planPath() %></td>
+    <td><%= i.spaceStart() %></td>
+    <td><%= i.spaceTotal() %></td>
+    <td><%= i.spaceFree() %></td>
+    <td><%= i.qrcodeId() %></td>
+    <td><%= i.memo() %></td>
+    <td>
+      <%== linkTo("Show", urla("show", i.id())) %>
+      <%== linkTo("Edit", urla("edit", i.id())) %>
+      <%== linkTo("Remove", urla("remove", i.id()), Tf::Post, "confirm('Are you sure?')") %>
+    </td>
+  </tr>
+<% } %>
+</table>
+
+</body>
+</html>

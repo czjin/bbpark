@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<%#include "parkingspaces.h" %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+
+<h1>Listing Parking Spaces</h1>
+
+<%== linkTo("New entry", urla("entry")) %><br />
+<br />
+<table border="1" cellpadding="5" style="border: 1px #d0d0d0 solid; border-collapse: collapse;">
+  <tr>
+    <th>ID</th>
+    <th>Parking ID</th>
+    <th>Number</th>
+    <th>Status</th>
+    <th>Qrcode Path</th>
+  </tr>
+<% tfetch(QList<ParkingSpaces>, parkingSpacesList); %>
+<% for (const auto &i : parkingSpacesList) { %>
+  <tr>
+    <td><%= i.id() %></td>
+    <td><%= i.parkingId() %></td>
+    <td><%= i.number() %></td>
+    <td><%= i.status() %></td>
+    <td><%= i.qrcodePath() %></td>
+    <td>
+      <%== linkTo("Show", urla("show", i.id())) %>
+      <%== linkTo("Edit", urla("edit", i.id())) %>
+      <%== linkTo("Remove", urla("remove", i.id()), Tf::Post, "confirm('Are you sure?')") %>
+    </td>
+  </tr>
+<% } %>
+</table>
+
+</body>
+</html>

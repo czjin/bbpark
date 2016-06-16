@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<%#include "parkbills.h" %>
+<% tfetch(ParkBills, parkBills); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>Showing Park Bills</h1>
+<dt>ID</dt><dd><%= parkBills.id() %></dd><br />
+<dt>Session ID</dt><dd><%= parkBills.sessionId() %></dd><br />
+<dt>Source</dt><dd><%= parkBills.source() %></dd><br />
+<dt>Amount</dt><dd><%= parkBills.amount() %></dd><br />
+<dt>Status</dt><dd><%= parkBills.status() %></dd><br />
+<dt>Created at</dt><dd><%= parkBills.createdAt() %></dd><br />
+
+<%== linkTo("Edit", urla("edit", parkBills.id())) %> |
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

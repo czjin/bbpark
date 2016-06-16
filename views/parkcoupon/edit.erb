@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<%#include "parkcoupon.h" %>
+<% tfetch(QVariantMap, parkCoupon); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>Editing Park Coupon</h1>
+
+<%== formTag(urla("save", parkCoupon["id"]), Tf::Post) %>
+  <p>
+    <label>ID<br /><input type="text" name="parkCoupon[id]" value="<%= parkCoupon["id"] %>" readonly="readonly" /></label>
+  </p>
+  <p>
+    <label>Coupon No<br /><input type="text" name="parkCoupon[couponNo]" value="<%= parkCoupon["couponNo"] %>" /></label>
+  </p>
+  <p>
+    <label>Check Code<br /><input type="text" name="parkCoupon[checkCode]" value="<%= parkCoupon["checkCode"] %>" /></label>
+  </p>
+  <p>
+    <label>Amount<br /><input type="text" name="parkCoupon[amount]" value="<%= parkCoupon["amount"] %>" /></label>
+  </p>
+  <p>
+    <label>Status<br /><input type="text" name="parkCoupon[status]" value="<%= parkCoupon["status"] %>" /></label>
+  </p>
+  <p>
+    <label>Use Time<br /><input type="text" name="parkCoupon[useTime]" value="<%= parkCoupon["useTime"] %>" /></label>
+  </p>
+  <p>
+    <label>Valid till<br /><input type="text" name="parkCoupon[validTill]" value="<%= parkCoupon["validTill"] %>" /></label>
+  </p>
+  <p>
+    <input type="submit" value="Update" />
+  </p>
+</form>
+
+<%== linkTo("Show", urla("show", parkCoupon["id"])) %> |
+<%== linkTo("Back", urla("index")) %>
+</body>
+</html>

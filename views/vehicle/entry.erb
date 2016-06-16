@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<%#include "vehicle.h" %>
+<% tfetch(QVariantMap, vehicle); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>New Vehicle</h1>
+
+<%== formTag(urla("create"), Tf::Post) %>
+  <p>
+    <label>Plate<br /><input name="vehicle[plate]" value="<%= vehicle["plate"] %>" /></label>
+  </p>
+  <p>
+    <label>Engine No<br /><input name="vehicle[engineNo]" value="<%= vehicle["engineNo"] %>" /></label>
+  </p>
+  <p>
+    <label>Frame No<br /><input name="vehicle[frameNo]" value="<%= vehicle["frameNo"] %>" /></label>
+  </p>
+  <p>
+    <label>Register Time<br /><input name="vehicle[registerTime]" value="<%= vehicle["registerTime"] %>" /></label>
+  </p>
+  <p>
+    <label>Vehicle Type<br /><input name="vehicle[vehicleType]" value="<%= vehicle["vehicleType"] %>" /></label>
+  </p>
+  <p>
+    <input type="submit" value="Create" />
+  </p>
+</form>
+
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

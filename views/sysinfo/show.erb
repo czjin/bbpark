@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<%#include "sysinfo.h" %>
+<% tfetch(Sysinfo, sysinfo); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>Showing Sysinfo</h1>
+<dt>ID</dt><dd><%= sysinfo.id() %></dd><br />
+<dt>Company</dt><dd><%= sysinfo.company() %></dd><br />
+<dt>Slogan</dt><dd><%= sysinfo.slogan() %></dd><br />
+<dt>Website</dt><dd><%= sysinfo.website() %></dd><br />
+<dt>Contact Hotline</dt><dd><%= sysinfo.contactHotline() %></dd><br />
+<dt>Serv Ver</dt><dd><%= sysinfo.servVer() %></dd><br />
+<dt>App Ver</dt><dd><%= sysinfo.appVer() %></dd><br />
+<dt>Handset Ver</dt><dd><%= sysinfo.handsetVer() %></dd><br />
+<dt>Created at</dt><dd><%= sysinfo.createdAt() %></dd><br />
+
+<%== linkTo("Edit", urla("edit", sysinfo.id())) %> |
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

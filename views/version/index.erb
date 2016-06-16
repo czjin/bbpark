@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<%#include "version.h" %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+
+<h1>Listing Version</h1>
+
+<%== linkTo("New entry", urla("entry")) %><br />
+<br />
+<table border="1" cellpadding="5" style="border: 1px #d0d0d0 solid; border-collapse: collapse;">
+  <tr>
+    <th>ID</th>
+    <th>Appid</th>
+    <th>Major Version</th>
+    <th>Minor Version</th>
+    <th>Revision</th>
+    <th>Content</th>
+    <th>Help</th>
+    <th>Download Url</th>
+  </tr>
+<% tfetch(QList<Version>, versionList); %>
+<% for (const auto &i : versionList) { %>
+  <tr>
+    <td><%= i.id() %></td>
+    <td><%= i.appid() %></td>
+    <td><%= i.majorVersion() %></td>
+    <td><%= i.minorVersion() %></td>
+    <td><%= i.revision() %></td>
+    <td><%= i.content() %></td>
+    <td><%= i.help() %></td>
+    <td><%= i.downloadUrl() %></td>
+    <td>
+      <%== linkTo("Show", urla("show", i.id())) %>
+      <%== linkTo("Edit", urla("edit", i.id())) %>
+      <%== linkTo("Remove", urla("remove", i.id()), Tf::Post, "confirm('Are you sure?')") %>
+    </td>
+  </tr>
+<% } %>
+</table>
+
+</body>
+</html>

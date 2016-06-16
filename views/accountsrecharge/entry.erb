@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<%#include "accountsrecharge.h" %>
+<% tfetch(QVariantMap, accountsRecharge); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>New Accounts Recharge</h1>
+
+<%== formTag(urla("create"), Tf::Post) %>
+  <p>
+    <label>User ID<br /><input name="accountsRecharge[userId]" value="<%= accountsRecharge["userId"] %>" /></label>
+  </p>
+  <p>
+    <label>Amount<br /><input name="accountsRecharge[amount]" value="<%= accountsRecharge["amount"] %>" /></label>
+  </p>
+  <p>
+    <label>Source<br /><input name="accountsRecharge[source]" value="<%= accountsRecharge["source"] %>" /></label>
+  </p>
+  <p>
+    <label>Memo<br /><input name="accountsRecharge[memo]" value="<%= accountsRecharge["memo"] %>" /></label>
+  </p>
+  <p>
+    <input type="submit" value="Create" />
+  </p>
+</form>
+
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

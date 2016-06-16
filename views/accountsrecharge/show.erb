@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<%#include "accountsrecharge.h" %>
+<% tfetch(AccountsRecharge, accountsRecharge); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>Showing Accounts Recharge</h1>
+<dt>ID</dt><dd><%= accountsRecharge.id() %></dd><br />
+<dt>User ID</dt><dd><%= accountsRecharge.userId() %></dd><br />
+<dt>Amount</dt><dd><%= accountsRecharge.amount() %></dd><br />
+<dt>Source</dt><dd><%= accountsRecharge.source() %></dd><br />
+<dt>Created at</dt><dd><%= accountsRecharge.createdAt() %></dd><br />
+<dt>Memo</dt><dd><%= accountsRecharge.memo() %></dd><br />
+
+<%== linkTo("Edit", urla("edit", accountsRecharge.id())) %> |
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

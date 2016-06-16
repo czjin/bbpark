@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<%#include "feedback.h" %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+
+<h1>Listing Feedback</h1>
+
+<%== linkTo("New entry", urla("entry")) %><br />
+<br />
+<table border="1" cellpadding="5" style="border: 1px #d0d0d0 solid; border-collapse: collapse;">
+  <tr>
+    <th>ID</th>
+    <th>User ID</th>
+    <th>Content</th>
+    <th>Voice</th>
+  </tr>
+<% tfetch(QList<Feedback>, feedbackList); %>
+<% for (const auto &i : feedbackList) { %>
+  <tr>
+    <td><%= i.id() %></td>
+    <td><%= i.userId() %></td>
+    <td><%= i.content() %></td>
+    <td><%= i.voice() %></td>
+    <td>
+      <%== linkTo("Show", urla("show", i.id())) %>
+      <%== linkTo("Edit", urla("edit", i.id())) %>
+      <%== linkTo("Remove", urla("remove", i.id()), Tf::Post, "confirm('Are you sure?')") %>
+    </td>
+  </tr>
+<% } %>
+</table>
+
+</body>
+</html>

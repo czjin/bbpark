@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<%#include "parkprepay.h" %>
+<% tfetch(QVariantMap, parkPrepay); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>New Park Prepay</h1>
+
+<%== formTag(urla("create"), Tf::Post) %>
+  <p>
+    <label>User ID<br /><input name="parkPrepay[userId]" value="<%= parkPrepay["userId"] %>" /></label>
+  </p>
+  <p>
+    <label>Session ID<br /><input name="parkPrepay[sessionId]" value="<%= parkPrepay["sessionId"] %>" /></label>
+  </p>
+  <p>
+    <label>Prepaid<br /><input name="parkPrepay[prepaid]" value="<%= parkPrepay["prepaid"] %>" /></label>
+  </p>
+  <p>
+    <input type="submit" value="Create" />
+  </p>
+</form>
+
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

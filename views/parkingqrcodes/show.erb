@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<%#include "parkingqrcodes.h" %>
+<% tfetch(ParkingQrcodes, parkingQrcodes); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>Showing Parking Qrcodes</h1>
+<dt>ID</dt><dd><%= parkingQrcodes.id() %></dd><br />
+<dt>Description</dt><dd><%= parkingQrcodes.description() %></dd><br />
+<dt>Path</dt><dd><%= parkingQrcodes.path() %></dd><br />
+<dt>Created at</dt><dd><%= parkingQrcodes.createdAt() %></dd><br />
+<dt>Updated at</dt><dd><%= parkingQrcodes.updatedAt() %></dd><br />
+<dt>Lock Revision</dt><dd><%= parkingQrcodes.lockRevision() %></dd><br />
+
+<%== linkTo("Edit", urla("edit", parkingQrcodes.id())) %> |
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

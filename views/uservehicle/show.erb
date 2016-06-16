@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<%#include "uservehicle.h" %>
+<% tfetch(UserVehicle, userVehicle); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>Showing User Vehicle</h1>
+<dt>ID</dt><dd><%= userVehicle.id() %></dd><br />
+<dt>User ID</dt><dd><%= userVehicle.userId() %></dd><br />
+<dt>Vehicle ID</dt><dd><%= userVehicle.vehicleId() %></dd><br />
+<dt>Created at</dt><dd><%= userVehicle.createdAt() %></dd><br />
+<dt>Updated at</dt><dd><%= userVehicle.updatedAt() %></dd><br />
+<dt>Lock Revision</dt><dd><%= userVehicle.lockRevision() %></dd><br />
+
+<%== linkTo("Edit", urla("edit", userVehicle.id())) %> |
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

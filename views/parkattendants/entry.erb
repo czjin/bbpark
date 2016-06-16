@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<%#include "parkattendants.h" %>
+<% tfetch(QVariantMap, parkAttendants); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>New Park Attendants</h1>
+
+<%== formTag(urla("create"), Tf::Post) %>
+  <p>
+    <label>Name<br /><input name="parkAttendants[name]" value="<%= parkAttendants["name"] %>" /></label>
+  </p>
+  <p>
+    <label>Code<br /><input name="parkAttendants[code]" value="<%= parkAttendants["code"] %>" /></label>
+  </p>
+  <p>
+    <label>Real Name<br /><input name="parkAttendants[realName]" value="<%= parkAttendants["realName"] %>" /></label>
+  </p>
+  <p>
+    <label>Sex<br /><input name="parkAttendants[sex]" value="<%= parkAttendants["sex"] %>" /></label>
+  </p>
+  <p>
+    <label>Avatar<br /><input name="parkAttendants[avatar]" value="<%= parkAttendants["avatar"] %>" /></label>
+  </p>
+  <p>
+    <input type="submit" value="Create" />
+  </p>
+</form>
+
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

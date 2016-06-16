@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<%#include "version.h" %>
+<% tfetch(QVariantMap, version); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>New Version</h1>
+
+<%== formTag(urla("create"), Tf::Post) %>
+  <p>
+    <label>Appid<br /><input name="version[appid]" value="<%= version["appid"] %>" /></label>
+  </p>
+  <p>
+    <label>Major Version<br /><input name="version[majorVersion]" value="<%= version["majorVersion"] %>" /></label>
+  </p>
+  <p>
+    <label>Minor Version<br /><input name="version[minorVersion]" value="<%= version["minorVersion"] %>" /></label>
+  </p>
+  <p>
+    <label>Revision<br /><input name="version[revision]" value="<%= version["revision"] %>" /></label>
+  </p>
+  <p>
+    <label>Content<br /><input name="version[content]" value="<%= version["content"] %>" /></label>
+  </p>
+  <p>
+    <label>Help<br /><input name="version[help]" value="<%= version["help"] %>" /></label>
+  </p>
+  <p>
+    <label>Download Url<br /><input name="version[downloadUrl]" value="<%= version["downloadUrl"] %>" /></label>
+  </p>
+  <p>
+    <input type="submit" value="Create" />
+  </p>
+</form>
+
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

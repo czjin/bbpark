@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<%#include "operatorparking.h" %>
+<% tfetch(OperatorParking, operatorParking); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>Showing Operator Parking</h1>
+<dt>ID</dt><dd><%= operatorParking.id() %></dd><br />
+<dt>Operator ID</dt><dd><%= operatorParking.operatorId() %></dd><br />
+<dt>Parking ID</dt><dd><%= operatorParking.parkingId() %></dd><br />
+<dt>Status</dt><dd><%= operatorParking.status() %></dd><br />
+<dt>Created at</dt><dd><%= operatorParking.createdAt() %></dd><br />
+<dt>Updated at</dt><dd><%= operatorParking.updatedAt() %></dd><br />
+
+<%== linkTo("Edit", urla("edit", operatorParking.id())) %> |
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

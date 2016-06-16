@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<%#include "parkings.h" %>
+<% tfetch(QVariantMap, parkings); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>New Parkings</h1>
+
+<%== formTag(urla("create"), Tf::Post) %>
+  <p>
+    <label>Name<br /><input name="parkings[name]" value="<%= parkings["name"] %>" /></label>
+  </p>
+  <p>
+    <label>Description<br /><input name="parkings[description]" value="<%= parkings["description"] %>" /></label>
+  </p>
+  <p>
+    <label>Addr<br /><input name="parkings[addr]" value="<%= parkings["addr"] %>" /></label>
+  </p>
+  <p>
+    <label>Charge Standard<br /><input name="parkings[chargeStandard]" value="<%= parkings["chargeStandard"] %>" /></label>
+  </p>
+  <p>
+    <label>Longitude<br /><input name="parkings[longitude]" value="<%= parkings["longitude"] %>" /></label>
+  </p>
+  <p>
+    <label>Latitude<br /><input name="parkings[latitude]" value="<%= parkings["latitude"] %>" /></label>
+  </p>
+  <p>
+    <label>Type<br /><input name="parkings[type]" value="<%= parkings["type"] %>" /></label>
+  </p>
+  <p>
+    <label>Plan Path<br /><input name="parkings[planPath]" value="<%= parkings["planPath"] %>" /></label>
+  </p>
+  <p>
+    <label>Space Start<br /><input name="parkings[spaceStart]" value="<%= parkings["spaceStart"] %>" /></label>
+  </p>
+  <p>
+    <label>Space Total<br /><input name="parkings[spaceTotal]" value="<%= parkings["spaceTotal"] %>" /></label>
+  </p>
+  <p>
+    <label>Space Free<br /><input name="parkings[spaceFree]" value="<%= parkings["spaceFree"] %>" /></label>
+  </p>
+  <p>
+    <label>Qrcode ID<br /><input name="parkings[qrcodeId]" value="<%= parkings["qrcodeId"] %>" /></label>
+  </p>
+  <p>
+    <label>Memo<br /><input name="parkings[memo]" value="<%= parkings["memo"] %>" /></label>
+  </p>
+  <p>
+    <input type="submit" value="Create" />
+  </p>
+</form>
+
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

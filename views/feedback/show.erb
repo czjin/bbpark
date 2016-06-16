@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<%#include "feedback.h" %>
+<% tfetch(Feedback, feedback); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>Showing Feedback</h1>
+<dt>ID</dt><dd><%= feedback.id() %></dd><br />
+<dt>User ID</dt><dd><%= feedback.userId() %></dd><br />
+<dt>Content</dt><dd><%= feedback.content() %></dd><br />
+<dt>Voice</dt><dd><%= feedback.voice() %></dd><br />
+<dt>Created at</dt><dd><%= feedback.createdAt() %></dd><br />
+
+<%== linkTo("Edit", urla("edit", feedback.id())) %> |
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

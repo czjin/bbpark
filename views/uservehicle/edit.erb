@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<%#include "uservehicle.h" %>
+<% tfetch(QVariantMap, userVehicle); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>Editing User Vehicle</h1>
+
+<%== formTag(urla("save", userVehicle["id"]), Tf::Post) %>
+  <p>
+    <label>ID<br /><input type="text" name="userVehicle[id]" value="<%= userVehicle["id"] %>" readonly="readonly" /></label>
+  </p>
+  <p>
+    <label>User ID<br /><input type="text" name="userVehicle[userId]" value="<%= userVehicle["userId"] %>" /></label>
+  </p>
+  <p>
+    <label>Vehicle ID<br /><input type="text" name="userVehicle[vehicleId]" value="<%= userVehicle["vehicleId"] %>" /></label>
+  </p>
+  <p>
+    <input type="submit" value="Update" />
+  </p>
+</form>
+
+<%== linkTo("Show", urla("show", userVehicle["id"])) %> |
+<%== linkTo("Back", urla("index")) %>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<%#include "parkings.h" %>
+<% tfetch(Parkings, parkings); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>Showing Parkings</h1>
+<dt>ID</dt><dd><%= parkings.id() %></dd><br />
+<dt>Name</dt><dd><%= parkings.name() %></dd><br />
+<dt>Description</dt><dd><%= parkings.description() %></dd><br />
+<dt>Addr</dt><dd><%= parkings.addr() %></dd><br />
+<dt>Charge Standard</dt><dd><%= parkings.chargeStandard() %></dd><br />
+<dt>Longitude</dt><dd><%= parkings.longitude() %></dd><br />
+<dt>Latitude</dt><dd><%= parkings.latitude() %></dd><br />
+<dt>Type</dt><dd><%= parkings.type() %></dd><br />
+<dt>Plan Path</dt><dd><%= parkings.planPath() %></dd><br />
+<dt>Space Start</dt><dd><%= parkings.spaceStart() %></dd><br />
+<dt>Space Total</dt><dd><%= parkings.spaceTotal() %></dd><br />
+<dt>Space Free</dt><dd><%= parkings.spaceFree() %></dd><br />
+<dt>Qrcode ID</dt><dd><%= parkings.qrcodeId() %></dd><br />
+<dt>Memo</dt><dd><%= parkings.memo() %></dd><br />
+<dt>Created at</dt><dd><%= parkings.createdAt() %></dd><br />
+<dt>Updated at</dt><dd><%= parkings.updatedAt() %></dd><br />
+<dt>Lock Revision</dt><dd><%= parkings.lockRevision() %></dd><br />
+
+<%== linkTo("Edit", urla("edit", parkings.id())) %> |
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

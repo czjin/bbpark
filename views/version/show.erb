@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<%#include "version.h" %>
+<% tfetch(Version, version); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>Showing Version</h1>
+<dt>ID</dt><dd><%= version.id() %></dd><br />
+<dt>Appid</dt><dd><%= version.appid() %></dd><br />
+<dt>Major Version</dt><dd><%= version.majorVersion() %></dd><br />
+<dt>Minor Version</dt><dd><%= version.minorVersion() %></dd><br />
+<dt>Revision</dt><dd><%= version.revision() %></dd><br />
+<dt>Content</dt><dd><%= version.content() %></dd><br />
+<dt>Help</dt><dd><%= version.help() %></dd><br />
+<dt>Download Url</dt><dd><%= version.downloadUrl() %></dd><br />
+<dt>Created at</dt><dd><%= version.createdAt() %></dd><br />
+
+<%== linkTo("Edit", urla("edit", version.id())) %> |
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

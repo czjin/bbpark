@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<%#include "parkprepay.h" %>
+<% tfetch(ParkPrepay, parkPrepay); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>Showing Park Prepay</h1>
+<dt>ID</dt><dd><%= parkPrepay.id() %></dd><br />
+<dt>User ID</dt><dd><%= parkPrepay.userId() %></dd><br />
+<dt>Session ID</dt><dd><%= parkPrepay.sessionId() %></dd><br />
+<dt>Prepaid</dt><dd><%= parkPrepay.prepaid() %></dd><br />
+<dt>Created at</dt><dd><%= parkPrepay.createdAt() %></dd><br />
+
+<%== linkTo("Edit", urla("edit", parkPrepay.id())) %> |
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

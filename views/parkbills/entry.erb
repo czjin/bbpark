@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<%#include "parkbills.h" %>
+<% tfetch(QVariantMap, parkBills); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>New Park Bills</h1>
+
+<%== formTag(urla("create"), Tf::Post) %>
+  <p>
+    <label>Session ID<br /><input name="parkBills[sessionId]" value="<%= parkBills["sessionId"] %>" /></label>
+  </p>
+  <p>
+    <label>Source<br /><input name="parkBills[source]" value="<%= parkBills["source"] %>" /></label>
+  </p>
+  <p>
+    <label>Amount<br /><input name="parkBills[amount]" value="<%= parkBills["amount"] %>" /></label>
+  </p>
+  <p>
+    <label>Status<br /><input name="parkBills[status]" value="<%= parkBills["status"] %>" /></label>
+  </p>
+  <p>
+    <input type="submit" value="Create" />
+  </p>
+</form>
+
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

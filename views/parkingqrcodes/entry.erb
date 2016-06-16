@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<%#include "parkingqrcodes.h" %>
+<% tfetch(QVariantMap, parkingQrcodes); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>New Parking Qrcodes</h1>
+
+<%== formTag(urla("create"), Tf::Post) %>
+  <p>
+    <label>Description<br /><input name="parkingQrcodes[description]" value="<%= parkingQrcodes["description"] %>" /></label>
+  </p>
+  <p>
+    <label>Path<br /><input name="parkingQrcodes[path]" value="<%= parkingQrcodes["path"] %>" /></label>
+  </p>
+  <p>
+    <input type="submit" value="Create" />
+  </p>
+</form>
+
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<%#include "feedback.h" %>
+<% tfetch(QVariantMap, feedback); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>New Feedback</h1>
+
+<%== formTag(urla("create"), Tf::Post) %>
+  <p>
+    <label>ID<br /><input name="feedback[id]" value="<%= feedback["id"] %>" /></label>
+  </p>
+  <p>
+    <label>User ID<br /><input name="feedback[userId]" value="<%= feedback["userId"] %>" /></label>
+  </p>
+  <p>
+    <label>Content<br /><input name="feedback[content]" value="<%= feedback["content"] %>" /></label>
+  </p>
+  <p>
+    <label>Voice<br /><input name="feedback[voice]" value="<%= feedback["voice"] %>" /></label>
+  </p>
+  <p>
+    <input type="submit" value="Create" />
+  </p>
+</form>
+
+<%== linkTo("Back", urla("index")) %>
+
+</body>
+</html>

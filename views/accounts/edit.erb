@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<%#include "accounts.h" %>
+<% tfetch(QVariantMap, accounts); %>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= controller()->name() + ": " + controller()->activeAction() %></title>
+</head>
+<body>
+<p style="color: red"><%=$ error %></p>
+<p style="color: green"><%=$ notice %></p>
+
+<h1>Editing Accounts</h1>
+
+<%== formTag(urla("save", accounts["id"]), Tf::Post) %>
+  <p>
+    <label>ID<br /><input type="text" name="accounts[id]" value="<%= accounts["id"] %>" readonly="readonly" /></label>
+  </p>
+  <p>
+    <label>Acc No<br /><input type="text" name="accounts[accNo]" value="<%= accounts["accNo"] %>" /></label>
+  </p>
+  <p>
+    <label>User ID<br /><input type="text" name="accounts[userId]" value="<%= accounts["userId"] %>" /></label>
+  </p>
+  <p>
+    <label>Pay Code<br /><input type="text" name="accounts[payCode]" value="<%= accounts["payCode"] %>" /></label>
+  </p>
+  <p>
+    <label>Balance<br /><input type="text" name="accounts[balance]" value="<%= accounts["balance"] %>" /></label>
+  </p>
+  <p>
+    <label>Credit<br /><input type="text" name="accounts[credit]" value="<%= accounts["credit"] %>" /></label>
+  </p>
+  <p>
+    <label>Credit Available<br /><input type="text" name="accounts[creditAvailable]" value="<%= accounts["creditAvailable"] %>" /></label>
+  </p>
+  <p>
+    <label>Status<br /><input type="text" name="accounts[status]" value="<%= accounts["status"] %>" /></label>
+  </p>
+  <p>
+    <label>Type<br /><input type="text" name="accounts[type]" value="<%= accounts["type"] %>" /></label>
+  </p>
+  <p>
+    <label>Issuer<br /><input type="text" name="accounts[issuer]" value="<%= accounts["issuer"] %>" /></label>
+  </p>
+  <p>
+    <label>Memo<br /><input type="text" name="accounts[memo]" value="<%= accounts["memo"] %>" /></label>
+  </p>
+  <p>
+    <input type="submit" value="Update" />
+  </p>
+</form>
+
+<%== linkTo("Show", urla("show", accounts["id"])) %> |
+<%== linkTo("Back", urla("index")) %>
+</body>
+</html>
